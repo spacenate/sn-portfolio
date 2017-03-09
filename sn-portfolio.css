@@ -1,0 +1,132 @@
+
+/* @todo - allow moving preview image "up or down", for example ibex image looks better with
+background-position-y: 20%; */
+/* @todo - create way of adding custom styles to archive and/or full piece */
+
+.sn-porfolio-piece {
+    position: relative;
+    min-height: 240px;
+    margin: 20px 0 40px;
+}
+
+.sn-piece-preview {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.sn-sidebar-header ~ .sn-sidebar-header {
+    margin-top: 1em;
+}
+
+/* Text preview */
+/* @todo - add link hover/active */
+.sn-piece-preview .sn-piece-title {
+    font-size: 23px;
+}
+
+.sn-piece-preview .sn-piece-description {
+
+}
+
+/* Image preview */
+/* @todo - add link hover/active */
+.sn-piece-preview .sn-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 10%;
+    height: 200px;
+    border: 1px solid #777;
+}
+
+
+/* === Side-by-side layout === */
+
+.sn-layout-sidebyside .sn-piece-preview {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.sn-layout-sidebyside .sn-piece-preview:nth-child(1) {
+    margin-bottom: 16px;
+}
+
+@media (min-width: 720px) {
+    .sn-layout-sidebyside .sn-piece-preview,
+    .sn-layout-sidebyside .sn-image {
+        height: 300px;
+    }
+
+    .sn-layout-sidebyside .sn-piece-preview:nth-child(1) {
+        width: 66%;
+    }
+
+    .sn-layout-sidebyside .sn-piece-preview:nth-child(1) .sn-preview-contents {
+        margin-right: 20px;
+    }
+
+    .sn-layout-sidebyside .sn-piece-preview:nth-child(2) {
+        width: 34%;
+    }
+}
+
+@media (min-width: 880px) {
+    .sn-layout-sidebyside .sn-piece-title {
+        font-size: 29px;
+    }
+}
+
+@media (min-width: 1120px) {
+    .sn-layout-sidebyside .sn-piece-preview,
+    .sn-layout-sidebyside .sn-image {
+        height: 400px;
+    }
+}
+
+
+/* === Stacked layout === */
+
+.sn-layout-stacked {
+    vertical-align: top;
+}
+
+.sn-layout-stacked .sn-piece-preview:nth-child(1) {
+    margin-bottom: 16px;
+}
+
+@media (min-width: 720px) {
+    .sn-layout-stacked.two-column,
+    .sn-layout-stacked.three-column {
+        display: inline-block;
+        padding: 0 10px;
+    }
+
+    .sn-layout-stacked.two-column {
+        width: 50%;
+    }
+
+    .sn-layout-stacked.two-column .sn-image {
+        height: 200px;
+    }
+
+    .sn-layout-stacked.three-column {
+        width: 33%;
+    }
+
+    .sn-layout-stacked.three-column .sn-piece-preview,
+    .sn-layout-stacked.three-column .sn-image {
+        height: 166px;
+    }
+}
+
+@media (min-width: 880px) {
+    .sn-layout-stacked.two-column .sn-piece-preview,
+    .sn-layout-stacked.two-column .sn-image {
+        height: 250px;
+    }
+
+    .sn-layout-stacked.three-column .sn-piece-preview,
+    .sn-layout-stacked.three-column .sn-image {
+        height: 200px;
+    }
+}

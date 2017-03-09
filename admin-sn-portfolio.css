@@ -1,0 +1,47 @@
+/* Layout */
+
+.sn-list {
+    margin: 10px 5px;
+}
+
+.sn-list-item {
+    margin-bottom: 0px;
+    list-style-position: inside;
+    padding: 5px;
+}
+
+
+/* State */
+
+.sn-list.sn-list__reorderable .sn-list-item.ghost {
+    background-color: #ccc;
+    list-style-type: none;
+}
+
+.sn-list.sn-list__reorderable .sn-list-item.ghost > label {
+    opacity: 0.5;
+}
+
+
+/* Theme */
+
+.sn-list.sn-list__reorderable {
+    border: 1px solid black;
+}
+
+.sn-list.sn-list__reorderable .sn-list-item {
+    border-bottom: 1px solid;
+}
+
+.sn-list.sn-list__reorderable .sn-list-item,
+.sn-list.sn-list__reorderable .sn-list-item > label {
+    cursor: move;
+}
+
+.sn-list.sn-list__reorderable .sn-list-item:last-of-type {
+    border-bottom: none;
+}
+
+#sn_portfolio_featured_pieces + em {
+    margin: 10px 5px;
+}
