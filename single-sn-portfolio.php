@@ -69,7 +69,7 @@ $query_second_vars = array(
 <aside class="widget-area">
     <?php if (!empty($post_source)): ?>
         <h2 class="sn-sidebar-header">Source</h2>
-        <a href="<?= $post_source ?>" target="_blank"><?= $post_source ?> ([]->)</a>
+        <a href="<?= $post_source ?>" target="_blank" class="sn-external-link"><?= $post_source ?></a>
     <?php endif; ?>
     <h2 class="sn-sidebar-header">Other Excellent Work</h2>
     <ul>
