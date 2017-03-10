@@ -3,6 +3,30 @@
 background-position-y: 20%; */
 /* @todo - create way of adding custom styles to archive and/or full piece */
 
+.sn-content-area {
+    width: 100%;
+}
+
+.sn-sidebar-area {
+    overflow: hidden;
+}
+
+@media screen and (min-width: 880px) {
+    .sn-content-area {
+        float: left;
+        margin: 0 -25% 0 0;
+    }
+
+    .sn-content {
+        margin: 0 32% 0 0;
+    }
+
+    .sn-sidebar-area {
+        float: right;
+        width: 25%;
+    }
+}
+
 .sn-porfolio-piece {
     position: relative;
     min-height: 240px;

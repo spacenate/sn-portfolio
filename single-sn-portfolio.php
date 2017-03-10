@@ -16,7 +16,7 @@ $post_ID = get_the_ID();
 $post_custom = get_post_custom($post_ID);
 $post_source = $post_custom['sn_portfolio_media_source'][0];
 
-$other_posts_count = 4;
+$other_posts_count = 5;
 
 // Get other posts of the same media type first
 $query_first_vars = array(
@@ -60,13 +60,13 @@ $query_second_vars = array(
 );
 
 ?>
-<main class="content-area">
-    <div class="site-main">
+<main class="sn-content-area">
+    <div class="sn-content">
         <h1><?php single_post_title(); ?></h1>
         <?php the_content(); ?>
     </div>
 </main>
-<aside class="widget-area">
+<aside class="sn-sidebar-area">
     <?php if (!empty($post_source)): ?>
         <h2 class="sn-sidebar-header">Source</h2>
         <div class="sn-sidebar-content">
