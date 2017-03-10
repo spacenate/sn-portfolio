@@ -14,8 +14,6 @@ if (!defined('ABSPATH')) {
 
 class SNPortfolioPostTypes {
 
-    static $nonce_name = 'sn_portfolio_nce_';
-
     function __construct()
     {
         $this->registerPostType();
@@ -136,7 +134,7 @@ class SNPortfolioPostTypes {
             'title'        => get_post_meta($post->ID, 'sn_portfolio_title', true),
             'description'  => get_post_meta($post->ID, 'sn_portfolio_description', true),
             'nonce_action' => basename(__FILE__),
-            'nonce_name'   => self::$nonce_name,
+            'nonce_name'   => 'sn-portfolio-nonce',
             'media_types'  => array(
                 'written'    => 'Written',
                 'video'      => 'Video',
@@ -179,7 +177,7 @@ class SNPortfolioPostTypes {
                 return $post_id;
             }
 
-            if (!isset($_POST[self::$nonce_name]) || !wp_verify_nonce($_POST[self::$nonce_name], basename(__FILE__))) {
+            if (!isset($_POST['sn-portfolio-nonce']) || !wp_verify_nonce($_POST['sn-portfolio-nonce'], basename(__FILE__))) {
                 return $post_id;
             }
 

@@ -18,6 +18,7 @@ $post_source = $post_custom['sn_portfolio_media_source'][0];
 
 $other_posts_count = 4;
 
+// Get other posts of the same media type first
 $query_first_vars = array(
     'post__not_in' => array($post_ID),
     'post_type' => 'sn_portfolio',
@@ -40,6 +41,7 @@ $query_first_vars = array(
     )
 );
 
+// Fill in with all posts
 $query_second_vars = array(
     'post__not_in' => array($post_ID),
     'post_type' => 'sn_portfolio',
@@ -67,7 +69,7 @@ $query_second_vars = array(
 <aside class="widget-area">
     <?php if (!empty($post_source)): ?>
         <h2 class="sn-sidebar-header">Source</h2>
-        <a href="<?= $post_source ?>" target="_blank"><?= $post_source ?></a>
+        <a href="<?= $post_source ?>" target="_blank"><?= $post_source ?> ([]->)</a>
     <?php endif; ?>
     <h2 class="sn-sidebar-header">Other Excellent Work</h2>
     <ul>
@@ -84,10 +86,13 @@ $query_second_vars = array(
         while ($query->have_posts()) {
             $query->the_post();
 
-            if (!isset($query_second_vars)) {
-                // require_once('vendor/autoload.php');
-                // eval(\Psy\sh());
+            // Don't pull the same posts twice
+            if (isset($query_second_vars)) {
+                $query_second_vars['post__not_in'][] = get_the_ID();
             }
+
+            // require_once('vendor/autoload.php');
+            // eval(\Psy\sh());
 
             ?>
             <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?> </a></li>
