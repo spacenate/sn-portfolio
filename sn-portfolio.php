@@ -7,6 +7,10 @@ Author: Nathan Sollenberger <nathanthehuman@spacenate.com>
 Author URI: https://www.spacenate.com
 License: GPLv2
 */
+/*
+@todo - convert Media Type to regular text input, if we aren't going to do anything with the categories
+@todo - also show in menu?
+*/
 
 if (!defined('ABSPATH')) {
     exit;
@@ -152,11 +156,11 @@ class SNPortfolioPostTypes {
     function adminEnqueueScripts() {
         add_action('admin_enqueue_scripts', function( $hook ) {
             if ($hook === 'sn_portfolio_page_sn_portfolio_settings') {
-                $script_path = plugins_url('sn-portfolio-admin.js', __FILE__);
-                wp_enqueue_script('sn-portfolio-admin', $script_path);
+                $script_path = plugins_url('admin-sn-portfolio.js', __FILE__);
+                wp_enqueue_script('admin-sn-portfolio', $script_path);
 
-                $style_path = plugins_url('sn-portfolio-admin.css', __FILE__);
-                wp_enqueue_style('sn-portfolio-admin', $style_path);
+                $style_path = plugins_url('admin-sn-portfolio.css', __FILE__);
+                wp_enqueue_style('admin-sn-portfolio', $style_path);
             }
         });
     }

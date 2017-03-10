@@ -19,6 +19,20 @@ background-position-y: 20%; */
     margin-top: 1em;
 }
 
+.sn-sidebar-content {
+    padding-left: 1em;
+}
+
+.sn-list {
+    list-style: none;
+    line-height: 1.6;
+    padding-left: 0;
+}
+
+.sn-list > li {
+    margin-bottom: 0.7em;
+}
+
 .sn-external-link {
     background: url(http://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png) center right no-repeat;
     padding-right: 13px;

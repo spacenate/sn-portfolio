@@ -69,43 +69,47 @@ $query_second_vars = array(
 <aside class="widget-area">
     <?php if (!empty($post_source)): ?>
         <h2 class="sn-sidebar-header">Source</h2>
-        <a href="<?= $post_source ?>" target="_blank" class="sn-external-link"><?= $post_source ?></a>
+        <div class="sn-sidebar-content">
+            <a href="<?= $post_source ?>" target="_blank" class="sn-external-link"><?= $post_source ?></a>
+        </div>
     <?php endif; ?>
     <h2 class="sn-sidebar-header">Other Excellent Work</h2>
-    <ul>
-        <?php
-        $query = new WP_Query($query_first_vars);
-
-        if ($query->found_posts < $other_posts_count) {
-            $query_second_vars['posts_per_page'] = $other_posts_count - $query->found_posts;
-        }
-        else {
-            unset($query_second_vars);
-        }
-
-        while ($query->have_posts()) {
-            $query->the_post();
-
-            // Don't pull the same posts twice
-            if (isset($query_second_vars)) {
-                $query_second_vars['post__not_in'][] = get_the_ID();
-            }
-
-            // require_once('vendor/autoload.php');
-            // eval(\Psy\sh());
-
-            ?>
-            <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?> </a></li>
+    <div class="sn-sidebar-content">
+        <ul class="sn-list">
             <?php
+            $query = new WP_Query($query_first_vars);
 
-            // When there is a second query, and we are done with the first query, start the second
-            if (isset($query_second_vars) && ($query->current_post + 1 >= $query->post_count)) {
-                $query = new WP_Query($query_second_vars);
+            if ($query->found_posts < $other_posts_count) {
+                $query_second_vars['posts_per_page'] = $other_posts_count - $query->found_posts;
+            }
+            else {
                 unset($query_second_vars);
             }
-        }
-        ?>
-    </ul>
+
+            while ($query->have_posts()) {
+                $query->the_post();
+
+                // Don't pull the same posts twice
+                if (isset($query_second_vars)) {
+                    $query_second_vars['post__not_in'][] = get_the_ID();
+                }
+
+                // require_once('vendor/autoload.php');
+                // eval(\Psy\sh());
+
+                ?>
+                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?> </a></li>
+                <?php
+
+                // When there is a second query, and we are done with the first query, start the second
+                if (isset($query_second_vars) && ($query->current_post + 1 >= $query->post_count)) {
+                    $query = new WP_Query($query_second_vars);
+                    unset($query_second_vars);
+                }
+            }
+            ?>
+        </ul>
+    </div>
 </aside>
 <?php
 
